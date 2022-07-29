@@ -1,11 +1,7 @@
-type CartProps = {
-    items: string[]
-}
+import './Cart.css'
 
-export function Cart(props: CartProps) {
+export function Cart() {
     return(
-        <p>
-            {props.items.length}
-        </p>   
+        <div className="cart--body"></div>
     )
 }

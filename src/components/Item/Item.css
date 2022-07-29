@@ -1,0 +1,9 @@
+.item--holder {
+    width: 1fr;
+    padding: 0.5rem;
+    display: grid;
+}
+
+.item--pic {
+    width: 100%;
+}

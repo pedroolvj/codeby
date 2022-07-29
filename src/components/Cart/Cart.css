@@ -1,0 +1,26 @@
+.cart--body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: red;
+}
+
+
+@media(min-width: 40rem) {
+    .cart--body {
+        position: fixed;
+        top: 0;
+        left: calc(100% - 18rem);
+        height: 100%;
+        width: 18rem;
+    }
+}
+
+@media(min-width: 60rem) {
+    .cart--body {
+        width: 23rem;
+        left: calc(100% - 23rem);
+    }
+}

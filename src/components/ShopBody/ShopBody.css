@@ -1,0 +1,35 @@
+.shop--body {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 67px);
+    width: 100%;
+}
+
+.items--container {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    padding: 1rem;
+    overflow: auto;
+    height: min-content;
+}
+
+@media(min-width: 40rem) {
+    .shop--body {
+        flex-direction: row;
+    }
+
+    .items--container {
+        grid-template-columns: 1fr 1fr 1fr;
+        width: calc(100% - 20rem);
+    }
+}
+
+@media(min-width: 60rem) {
+    .items--container {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        width: calc(100% - 25rem);
+    }
+}
