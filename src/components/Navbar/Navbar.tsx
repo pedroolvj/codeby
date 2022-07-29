@@ -1,5 +1,9 @@
+import './Navbar.css'
+
 export function Navbar() {
     return (
-        <h1>Teste</h1>
+        <nav>
+            <h1 className='codeby--header'>Codeby Shop</h1>
+        </nav>
     )
 }

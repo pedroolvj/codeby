@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Cart } from "../Cart/Cart";
+import { CartIcon } from "../CartIcon/CartIcon";
 import { Item } from "../Item/Item";
 
 export function ShopBody() {
@@ -23,7 +23,7 @@ export function ShopBody() {
                 return <Item click={AddToCart}  name={item}  key={item} />
             })}
 
-            <Cart items={cart}  />
+            <CartIcon items={cart}  />
         </>
     )
 }

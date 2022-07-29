@@ -1,0 +1,14 @@
+nav {
+    padding-block: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid #9c9c9c;
+}
+
+.codeby--header {
+    color: royalblue;
+    font-size: 2rem;
+    font-weight: 900;
+}
