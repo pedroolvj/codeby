@@ -1,2 +1,1 @@
-api: npm run api
-web: npm run web
+web: cd api && npm run api
