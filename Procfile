@@ -1,1 +1,1 @@
-web: npm api api/
+web: npm api
