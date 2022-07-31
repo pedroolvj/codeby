@@ -3,8 +3,8 @@
     width: 4rem;
     border-radius: 100%;
     background: royalblue;
-    z-index: 999;
-    position: absolute;
+    z-index: 888;
+    position: fixed;
     bottom: 0;
     right: 0;
     margin-bottom: 2rem;

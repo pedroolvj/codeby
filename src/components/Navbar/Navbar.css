@@ -4,7 +4,10 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 3px solid #9c9c9c;
+    border-bottom: 3px solid #ebebeb;
+    background-color: #FFF;
+    position: fixed;
+    z-index: 999;
 }
 
 .codeby--header {
@@ -13,13 +16,13 @@ nav {
     font-weight: 900;
 }
 
-@media(min-width: 40rem) {
+@media(min-width: 45rem) {
     nav {
         width: calc(100% - 18rem);
     }
 }
 
-@media(min-width: 60rem) {
+@media(min-width: 70rem) {
     nav {
         width: calc(100% - 23rem);
     }

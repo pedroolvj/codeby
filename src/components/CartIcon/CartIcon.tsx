@@ -1,7 +1,19 @@
+import { CartItems } from '../../type/CartType'
+import { ItemProps } from '../../type/ItemType'
 import './CartIcon.css'
 
 type CartProps = {
-    items: string[]
+    items: CartItems[]
+}
+
+function countItems(items: CartItems[]) {
+    let count = 0
+
+    items.forEach(element => {
+        count = count + element.qty
+    })
+
+    return count
 }
 
 export function CartIcon(props: CartProps) {
@@ -11,7 +23,7 @@ export function CartIcon(props: CartProps) {
                 0
             </div>
             <div className="cart--counter">
-                {props.items.length}
+                {countItems(props.items)}
             </div>
         </div>
     )

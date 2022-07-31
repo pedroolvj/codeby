@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { CartItems } from "../../type/CartType";
 import { ItemProps } from "../../type/ItemType";
 import { Cart } from "../Cart/Cart";
 import { CartIcon } from "../CartIcon/CartIcon";
@@ -40,15 +41,44 @@ export function ShopBody() {
         })
     }
 
-    const [cart, setCart] = useState<ItemProps[]>([])
+    const [cart, setCart] = useState<CartItems[]>([])
 
-    function AddToCart(item: ItemProps) {
-        setCart([...cart, item])
+    function AddToCart(addItem: ItemProps) {
+        let newArr: CartItems[] = [...cart]
+
+        const arrIndex = newArr.findIndex(
+            (element) => element.item.uniqueId == addItem.uniqueId
+        )
+
+        if(arrIndex < 0) {
+
+            let createItem: CartItems = {
+                item: addItem,
+                qty: 1
+            }
+
+            setCart([...cart, createItem])
+        } else {
+            newArr[arrIndex].qty++
+            setCart(newArr)
+        }
+
+        
+        console.log(cart)
+    }
+
+    function addMore(item: ItemProps) {
+        // todo
+    }
+
+    function removeItem(item: ItemProps) {
+        
     }
 
 return (
         <>  
             <div className="shop--body">
+            <h1 className="shop--title">Produtos</h1>
                 <div className="items--container">
                     {items.map(item => {
                         return <Item 
@@ -62,13 +92,10 @@ return (
                          />
                     })}
                 </div>
-                
-                <Cart />
-            </div>
 
-           { 
-           //<CartIcon items={cart}  />
-            }
+                <CartIcon items={cart}/>
+                <Cart items={cart}/>
+            </div>
         </>
     )
 }

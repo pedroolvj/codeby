@@ -1,3 +1,5 @@
+import './Button.css'
+
 type ButtonProps = {
     onClick: Function
 }
@@ -7,6 +9,6 @@ export function Button(props: ButtonProps) {
         props.onClick()
     }
     return(
-        <button onClick={handleClick}>Comprar</button>
+        <button className='button' onClick={handleClick}>Comprar</button>
     )
 }

@@ -1,0 +1,16 @@
+.button {
+    background-color: royalblue;
+    border: 0;
+    outline: 0;
+    padding: 0.2rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #FFF;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}

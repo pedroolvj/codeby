@@ -24,11 +24,13 @@ export function Item(props: ItemProps) {
 
     return (
         <div className="items--holder">
-            <img
-                src={props.imageUrl} 
-                alt="Product Image" 
-                className="item--pic"
-            />
+            <div className="item--pic--holder">
+                <img
+                    src={props.imageUrl} 
+                    alt="Product Image" 
+                    className="item--pic"
+                />
+            </div>
             <div className="item--information">
                 <div className="item--name">
                     {props.name}

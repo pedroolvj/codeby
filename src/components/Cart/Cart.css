@@ -1,16 +1,30 @@
+.cart--title {
+    width: fit-content;
+    margin-inline: auto;
+    font-size: 1.2rem;
+    margin-block: 1.155em;
+}
+
+hr {
+    height: 3px;
+    border: 0;
+    background-color: #ebebeb;
+}
+
 .cart--body {
-    position: absolute;
-    height: 100%;
+    position: fixed;
+    height: calc(100% - 67px);
     width: 100%;
-    top: 0;
+    top: 67px;
     left: 0;
-    background-color: red;
+    background-color: #FFF;
+    border-left: 3px solid #ebebeb;
+    z-index: 999;
 }
 
 
-@media(min-width: 40rem) {
+@media(min-width: 45rem) {
     .cart--body {
-        position: fixed;
         top: 0;
         left: calc(100% - 18rem);
         height: 100%;
@@ -18,7 +32,7 @@
     }
 }
 
-@media(min-width: 60rem) {
+@media(min-width: 70rem) {
     .cart--body {
         width: 23rem;
         left: calc(100% - 23rem);
