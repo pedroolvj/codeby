@@ -66,7 +66,9 @@ return (
                 <Cart />
             </div>
 
-            <CartIcon items={cart}  />
+           { 
+           //<CartIcon items={cart}  />
+            }
         </>
     )
 }
