@@ -2,7 +2,7 @@
     height: 4rem;
     width: 4rem;
     border-radius: 100%;
-    background: royalblue;
+    background-color: royalblue;
     z-index: 888;
     position: fixed;
     bottom: 0;
@@ -12,6 +12,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #FFF;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.icon--holder:hover {
+    background-color: rgb(83, 115, 211);
 }
 
 .cart--counter {
@@ -29,7 +36,11 @@
     color: #fff;
 }
 
-@media(min-width: 40rem) {
+.icon--cart {
+    color: #FFF;
+}
+
+@media(min-width: 45rem) {
     .icon--holder {
         display: none;
     }

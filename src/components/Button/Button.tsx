@@ -1,6 +1,7 @@
 import './Button.css'
 
 type ButtonProps = {
+    label: string;
     onClick: Function
 }
 
@@ -9,6 +10,6 @@ export function Button(props: ButtonProps) {
         props.onClick()
     }
     return(
-        <button className='button' onClick={handleClick}>Comprar</button>
+        <button className='button' onClick={handleClick}>{props.label}</button>
     )
 }

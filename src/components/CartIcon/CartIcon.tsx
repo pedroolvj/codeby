@@ -3,7 +3,8 @@ import { ItemProps } from '../../type/ItemType'
 import './CartIcon.css'
 
 type CartProps = {
-    items: CartItems[]
+    items: CartItems[];
+    openCart: Function
 }
 
 function countItems(items: CartItems[]) {
@@ -17,10 +18,21 @@ function countItems(items: CartItems[]) {
 }
 
 export function CartIcon(props: CartProps) {
+
+    function handleClick() {
+        if(countItems(props.items)> 0) {
+            props.openCart()
+        }
+    }
+
     return(
-        <div className="icon--holder">
+        <div className="icon--holder"
+            onClick={handleClick}
+        >
             <div className="icon--cart">
-                0
+            <span className="material-symbols-outlined">
+                shopping_cart
+            </span>
             </div>
             <div className="cart--counter">
                 {countItems(props.items)}

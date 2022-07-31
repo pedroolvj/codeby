@@ -42,7 +42,7 @@ export function Item(props: ItemProps) {
                     R$ { calcDiscountValue() }
                 </div>
             </div>
-            <Button onClick={handleClick} />
+            <Button onClick={handleClick} label="Comprar"/>
         </div>
 )
 }

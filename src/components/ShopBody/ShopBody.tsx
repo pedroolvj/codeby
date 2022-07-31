@@ -11,7 +11,7 @@ import './ShopBody.css'
 export function ShopBody() {
     const [items, setItems] = useState<ItemProps[]>([]) 
 
-    const [httpRequest, setHttpRequest] = useState(false)
+    const [cartOpened, setCartOpened] = useState<boolean>(false)
 
     useEffect(() => {
         axios({
@@ -43,6 +43,16 @@ export function ShopBody() {
 
     const [cart, setCart] = useState<CartItems[]>([])
 
+    function handleOpenCart() {
+        setCartOpened(!cartOpened)
+    }
+
+    window.addEventListener("resize", e => {
+        if(window.innerWidth > 768) {
+            setCartOpened(false)
+        }
+    })
+
     function AddToCart(addItem: ItemProps) {
         let newArr: CartItems[] = [...cart]
 
@@ -54,7 +64,7 @@ export function ShopBody() {
 
             let createItem: CartItems = {
                 item: addItem,
-                qty: 1
+                qty: 1,
             }
 
             setCart([...cart, createItem])
@@ -62,17 +72,26 @@ export function ShopBody() {
             newArr[arrIndex].qty++
             setCart(newArr)
         }
-
-        
-        console.log(cart)
     }
 
-    function addMore(item: ItemProps) {
-        // todo
-    }
+    function handleItems(add: boolean, item: ItemProps) {
+        let newArr: CartItems[] = [...cart]
 
-    function removeItem(item: ItemProps) {
+        const arrIndex = newArr.findIndex(
+            (element) => element.item.uniqueId == item.uniqueId
+        )
         
+        if(add == true) {
+            newArr[arrIndex].qty++
+        } else {
+            if(newArr[arrIndex].qty > 1) {
+                newArr[arrIndex].qty--
+            } else {
+                newArr.splice(arrIndex, 1)
+            }
+        }
+
+        setCart(newArr)
     }
 
 return (
@@ -93,8 +112,13 @@ return (
                     })}
                 </div>
 
-                <CartIcon items={cart}/>
-                <Cart items={cart}/>
+                <CartIcon openCart={handleOpenCart} items={cart}/>
+                <Cart
+                 cartOpened={cartOpened} 
+                 items={cart} 
+                 handleItems={handleItems}
+                 handleCartOpen={handleOpenCart}
+                 />
             </div>
         </>
     )

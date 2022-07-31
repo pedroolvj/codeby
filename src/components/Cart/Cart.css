@@ -15,13 +15,130 @@ hr {
     position: fixed;
     height: calc(100% - 67px);
     width: 100%;
-    top: 67px;
+    top: 100%;
     left: 0;
     background-color: #FFF;
-    border-left: 3px solid #ebebeb;
     z-index: 999;
+    overflow: auto;
+    transition: all 500ms ease;
 }
 
+.cart--body--opened {
+    top: 67px;
+}
+
+.cart--items {
+    display: flex;
+    flex-direction: column;
+}
+
+.empty--cart {
+    text-align: center;
+    padding-block: 1rem;
+}
+
+.cart--item {
+    display: flex;
+    width: auto;
+    padding: 0.5rem;
+}
+
+.cart--item--pic {
+    height: 6rem;
+    min-width: 6rem;
+    overflow: hidden;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+}
+
+.item--pic {
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+.cart--item--information {
+    margin-left: 0.5rem;
+}
+
+.item--controls {
+    font-size: 1rem;
+    display: flex;
+    margin-top: 0.5rem;
+    align-items: center;
+}
+
+.item--controls > * {
+    margin-right: 0.5rem;
+}
+
+.item--control {
+    font-size: 1rem;
+    padding: 0.2em;
+    height: 1.25em;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border: 0;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.minus {
+    background-color: rgb(255, 0, 55);
+}
+
+.minus:hover {
+    background-color: rgb(253, 48, 93);
+}
+
+.plus {
+    background-color: rgb(106, 134, 219);
+}
+
+.plus:hover {
+    background-color: rgb(142, 162, 221);
+}
+
+.back--to--shop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 0.5rem;
+}
+
+.total--holder {
+    padding-block: 0.5rem;
+}
+
+.total--container {
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.free--shipping {
+    margin-block: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 85%;
+    margin-inline: auto;
+    padding: 1rem;
+    font-weight: 500;
+    color: rgb(26, 153, 26);
+    background-color: rgb(195, 238, 195);
+    border-radius: 2rem;
+}
+
+.button--holder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-block: 1rem;
+}
 
 @media(min-width: 45rem) {
     .cart--body {
@@ -29,6 +146,19 @@ hr {
         left: calc(100% - 18rem);
         height: 100%;
         width: 18rem;
+        border-left: 3px solid #ebebeb;
+    }
+    
+    .cart--item {
+        width: 16rem;
+    }
+
+    .item--controls {
+        font-size: 0.8rem;
+    }
+
+    .item--control {
+        height: 1em;
     }
 }
 
@@ -36,5 +166,9 @@ hr {
     .cart--body {
         width: 23rem;
         left: calc(100% - 23rem);
+    }
+
+    .cart--item {
+        width: 21rem;
     }
 }

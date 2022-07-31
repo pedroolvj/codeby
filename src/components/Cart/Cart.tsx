@@ -1,9 +1,13 @@
 import { CartItems } from '../../type/CartType';
 import { ItemProps } from '../../type/ItemType'
+import { Button } from '../Button/Button';
 import './Cart.css'
 
 type CartProps = {
     items: CartItems[];
+    handleItems: Function;
+    cartOpened: boolean;
+    handleCartOpen: Function;
 }
 
 function calcDiscountValue(item: ItemProps) {
@@ -31,16 +35,61 @@ function calcCartValue(cart: CartItems[]) {
 }
 
 export function Cart(props: CartProps) {
+
+    function handleCartOpened() {
+        props.handleCartOpen()
+    }
+
+    function removeItem(item: ItemProps) {
+        props.handleItems(false, item)
+    }
+
+    function addItem(item: ItemProps) {
+        props.handleItems(true, item)
+    }
+
+    function calcFreeShipping() {
+        const freeShipping = calcCartValue(props.items)
+        if(freeShipping > 10) {
+            return (
+            <div className="free--shipping">
+                Parabéns, sua compra tem frete grátis!
+            </div>
+            )
+        } else {
+            return <></>
+        }
+    }
+
+    window.addEventListener("resize", e => {
+        verifyBackToShop()
+    })
+
+    function verifyBackToShop() {
+        if(window.innerWidth < 768) {
+            return(
+                <div className="back--to--shop">
+                    <Button label='Voltar a comprar' onClick={handleCartOpened}  />
+                </div>
+            )
+        }
+    }
+
+    function buy() {
+
+    }
+
     return(
-        <div className="cart--body">
+        <div className={`cart--body ${props.cartOpened ? 'cart--body--opened' : ''}`}>
             <h1 className="cart--title">Meu carrinho</h1>
             <hr />
             <div className="cart--items">
+                <span className={props.items.length == 0 ? 'empty--cart' : ''}>{props.items.length == 0 ? 'Seu carrinho está vazio.' : ''}</span>
                 {props.items.map(item => {
                     return (
-                        <div className="cart--item">
+                        <div className="cart--item" key={item.item.uniqueId}>
                             <div className="cart--item--pic">
-                                <img src={item.item.imageUrl} alt="Item image" />
+                                <img className='item--pic' src={item.item.imageUrl} alt="Item image" />
                             </div>
                             <div className="cart--item--information">
                                 <div className="item--name">
@@ -52,13 +101,40 @@ export function Cart(props: CartProps) {
                                 <div className="item--discount--value">
                                     {calcDiscountValue(item.item)}
                                 </div>
+                                <div className="item--controls">
+                                    <button className="item--control minus"
+                                        onClick={event => removeItem(item.item)}
+                                    >
+                                        -
+                                    </button>
+                                    <span className='qnty'>{item.qty}</span>
+                                    <button className='item--control plus'
+                                        onClick={event => addItem(item.item)}
+                                    >
+                                        +
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     )
                 })}
             </div>
-            <div className="free--shipping">
-                {calcCartValue(props.items) > 10 ? 'Free' : 'Not free'}
+            {verifyBackToShop()}
+            <hr />
+            <div className="total--holder">
+                <div className="total--container">
+                    <div className="total">
+                        Total
+                    </div>
+                    <div className="total--value">
+                        R$ {calcCartValue(props.items).toFixed(2)}
+                    </div>
+                </div>
+                {calcFreeShipping()}
+            </div>
+            <hr />
+            <div className="button--holder">
+                <Button onClick={buy} label="Finalizar compra"/>
             </div>
         </div>
     )
