@@ -1,5 +1,12 @@
-export function Button() {
+type ButtonProps = {
+    onClick: Function
+}
+
+export function Button(props: ButtonProps) {
+    function handleClick() {
+        props.onClick()
+    }
     return(
-        <button>Comprar</button>
+        <button onClick={handleClick}>Comprar</button>
     )
 }
